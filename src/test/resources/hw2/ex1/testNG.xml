@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite Data Provider"  data-provider-thread-count="4" verbose="1" >
+    <test name="Data Provider"   >
+
+        <packages>
+            <package name="hw2.ex1" />
+        </packages>
+
+    </test>
+</suite>

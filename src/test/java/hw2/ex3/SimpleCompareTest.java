@@ -1,25 +1,41 @@
-package hw1;
+package hw2.ex3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
-import static java.lang.System.setProperty;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class SimpleCompareTest {
-    @Test
-    public void openTestSite()
-    {
-        //Init driver
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+public class SimpleCompareTest extends TestBase{
 
+    private WebDriver driver;
+
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        driver = new ChromeDriver();
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    public void beforeMethod() {
+        driver.manage().window().maximize();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod(){
+        System.out.println(driver.getTitle());
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+        driver.close();
+    }
+
+    @Test
+    public void openTestSite() {
 
         //Open test site by URL
         driver.navigate().to("https://epam.github.io/JDI/index.html");
@@ -95,9 +111,5 @@ public class SimpleCompareTest {
 
         //Assert that there is Footer
         driver.findElement(By.className("footer-bg")).isDisplayed();
-
-
-        //Close driver
-        driver.close();
     }
 }
