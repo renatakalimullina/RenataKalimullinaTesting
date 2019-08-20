@@ -1,7 +1,7 @@
-package hw4;
+package hw5.DatesAndServicePagesTests;
 
 import com.codeborne.selenide.SelenideElement;
-import hw4.enums.Users;
+import hw5.enums.Users;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.open;

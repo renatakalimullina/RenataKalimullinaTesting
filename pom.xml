@@ -14,6 +14,18 @@
         <suiteXmlFile>testngJenkins.xml</suiteXmlFile>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>test-selenium</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw5/testngJenkins.xml</suite.xml>
+            </properties>
+        </profile>
+    </profiles>
+
 
     <dependencies>
         <dependency>
@@ -28,12 +40,16 @@
             <version>3.14.0</version>
         </dependency>
 
+
+        <!--Selenide-->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>4.14.2</version>
         </dependency>
 
+
+        <!--Allure-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
@@ -74,6 +90,8 @@
             </exclusions>
         </dependency>
 
+
+        <!--Allure-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -119,13 +137,15 @@
                 </configuration>
             </plugin>
 
+
+            <!--Allure-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resources\${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src\test\resources\hw5\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -146,6 +166,8 @@
         </plugins>
     </build>
 
+
+    <!--Allure-->
     <reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Example suite" >
+
+    <test name="suite">
+        <classes>
+            <class name="hw5.ServicePageInterfaceCheckSelenide" />
+            <class name="hw5.SimpleCompareTestPageObject"/>
+            <!--<class name="hw5.DatesPageSlidersCheckTest"/>-->
+        </classes>
+        <!--<packages>-->
+            <!--<package name="hw5" />-->
+        <!--</packages>-->
+    </test>
+</suite>
