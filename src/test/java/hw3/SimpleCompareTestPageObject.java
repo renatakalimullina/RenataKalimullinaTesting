@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import static java.lang.System.setProperty;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class SimpleCompareTest {
+public class SimpleCompareTestPageObject {
 
     private WebDriver driver;
     private HomePage homePage;
