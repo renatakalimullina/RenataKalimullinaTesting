@@ -5,6 +5,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static hw4.enums.HomePage.HOME_PAGE;
 import static hw4.enums.Users.PITER_CHAILOVSKII;
@@ -15,6 +17,8 @@ public class DatesPageSlidersCheckTest extends SelenideTestBase{
     HomePageSelenide homePageSelenide;
     UserPageSelenide userPageSelenide;
     DatesPageSelenide datesPageSelenide;
+
+    ArrayList<String> timeListForLogRow = new ArrayList<>();
 
     @BeforeClass
     public void beforeClass() {
@@ -47,29 +51,16 @@ public class DatesPageSlidersCheckTest extends SelenideTestBase{
         userPageSelenide.clickDatesPage();
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        //datesPageSelenide.dragAndDrop();
-        //datesPageSelenide.setSliderPosition(0, "right");
         datesPageSelenide.initSliders();
-        datesPageSelenide.moveSliders(0, 100);
-        datesPageSelenide.moveSliders(10, 80);
-        datesPageSelenide.moveSliders(30, 50);
+        datesPageSelenide.moveSliders(timeListForLogRow,0, 100);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-
+        datesPageSelenide.checkIndividualLog(timeListForLogRow, 1, 100); //with an error  will be 1 and 100
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-
+        datesPageSelenide.moveSliders(timeListForLogRow,0, 0);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-
-        //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
-
-        //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-
-        //12 Using drag-and-drop set Range sliders.
-
-        //13 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-
-
+        datesPageSelenide.checkIndividualLog(timeListForLogRow, 1,100,1,3);
     }
 }
