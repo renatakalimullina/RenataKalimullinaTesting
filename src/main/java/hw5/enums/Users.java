@@ -2,7 +2,7 @@ package hw5.enums;
 
 public enum Users {
 
-    PITER_CHAILOVSKII("epam", "1234", "PITER CHAILOVSKII123");
+    PITER_CHAILOVSKII("epam", "1234", "PITER CHAILOVSKII");
 
     public String login;
     public String password;

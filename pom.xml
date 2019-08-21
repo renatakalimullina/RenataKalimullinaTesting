@@ -9,9 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!--<allure.version>2.12.1</allure.version>-->
         <allure.version>2.6.0</allure.version>
-        <aspectj.version>1.8.12</aspectj.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <java.version>1.8</java.version>
+        <testng.version>6.14.3</testng.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <suiteXmlFile>testngJenkins.xml</suiteXmlFile>
+        <io.cucumber.version>3.0.2</io.cucumber.version>
     </properties>
 
     <profiles>
@@ -31,7 +36,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>${testng.version}</version>
         </dependency>
 
         <dependency>
@@ -55,15 +60,15 @@
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
             <exclusions>
-                <exclusion>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-            </exclusions>
+            <exclusion>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+            </exclusion>
+        </exclusions>
         </dependency>
 
         <dependency>
@@ -113,13 +118,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java8</artifactId>
-            <version>3.0.2</version>
+            <version>${io.cucumber.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>3.0.2</version>
+            <version>${io.cucumber.version}</version>
         </dependency>
 
     </dependencies>
@@ -129,10 +134,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -148,7 +153,7 @@
                         <suiteXmlFile>src\test\resources\hw5\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
