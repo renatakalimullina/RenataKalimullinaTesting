@@ -1,7 +1,8 @@
-package hw5.DatesAndServicePagesTests;
+package hw5.ServicePagesTests;
 
 import com.codeborne.selenide.SelenideElement;
 import hw5.enums.LogRow;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.text.SimpleDateFormat;
@@ -46,8 +47,7 @@ public class DifferentElementsPageSelenide {
 
 
 
-
-
+    @Step("Check interface on Different elements page")
     public void checkInterfaceOnDifferentElementsPage(){
         for(int i = 0; i < 4; i++)
             checkboxesOnDifferentElementsPage.get(i).exists();
@@ -57,15 +57,18 @@ public class DifferentElementsPageSelenide {
         defaultButtonOnDifferentElementsPage.exists();
     }
 
+    @Step("Check Right Section")
     public void rightSection(){
         rightSection.exists();
     }
 
+    @Step("Check Left Section")
     public void leftSection(){
         leftSection.exists();
     }
 
 
+    @Step("Select checkboxes and remember runtime")
     public void selectCheckboxes(ArrayList<String> timeArrayForLogRow) {
         checkboxesOnDifferentElementsPage.get(0).setSelected(true);
         timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
@@ -76,18 +79,20 @@ public class DifferentElementsPageSelenide {
         checkboxesOnDifferentElementsPage.get(2).shouldBe(checked);
     }
 
+    @Step("Select Radio and remember runtime")
     public void selectRadio(ArrayList<String> timeArrayForLogRow) {
         radiosOnDifferentElementsPage.get(3).setSelected(true);
         timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
         radiosOnDifferentElementsPage.get(3).shouldBe(checked);
     }
 
+    @Step("Select in dropdown and remember runtime")
     public void selectInDropdown(ArrayList<String> timeArrayForLogRow) {
         dropdown.selectOptionContainingText("Yellow");
         timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
     }
 
-
+    @Step("Unselect checkboxes and remember runtime")
     public void unselectCheckboxes(ArrayList<String> timeArrayForLogRow){
         checkboxesOnDifferentElementsPage.get(0).setSelected(false);
         timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
@@ -99,7 +104,7 @@ public class DifferentElementsPageSelenide {
 
 
 
-
+    @Step("Assert that for each checkbox there is an individual log row")
     public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox){
         log.shouldBe(text(
                         timeArrayForLogRow.get(1) +
@@ -108,6 +113,7 @@ public class DifferentElementsPageSelenide {
                         firstCheckbox.getStatusOfButton() ));
     }
 
+    @Step("Assert that for radiobutton there is a log row")
     public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName){
         log.shouldBe(text(
                         timeArrayForLogRow.get(2) +
@@ -118,6 +124,7 @@ public class DifferentElementsPageSelenide {
                         firstCheckbox.getStatusOfButton() ));
     }
 
+    @Step("Assert that for dropdown there is a log row")
     public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName){
         log.shouldBe(text(
                         timeArrayForLogRow.get(3) +
@@ -130,6 +137,7 @@ public class DifferentElementsPageSelenide {
                         firstCheckbox.getStatusOfButton() ));
     }
 
+    @Step("Assert that for each unselect checkbox there is an individual log row")
     public void checkIndividualLogWithUnselect(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName, LogRow firstUnselectCheckbox, LogRow seconUnselectdCheckbox){
         log.shouldBe(text(
                         timeArrayForLogRow.get(5) +

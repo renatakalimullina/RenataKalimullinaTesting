@@ -2,16 +2,24 @@ package hw5;
 
 import hw5.SimpleCompareTest.HomePage;
 import hw5.SimpleCompareTest.UserPage;
+import hw5.listeners.AllureAttachmentListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
 import static org.testng.AssertJUnit.assertEquals;
 
+
+@Feature(value = "Comparison on the Home Page")
+@Story(value = "Home Page Testing")
+@Listeners(AllureAttachmentListener.class)
 public class SimpleCompareTestPageObject {
 
     private WebDriver driver;

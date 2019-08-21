@@ -1,12 +1,16 @@
 package hw5;
 
 import com.codeborne.selenide.Selenide;
-import hw5.DatesAndServicePagesTests.DifferentElementsPageSelenide;
-import hw5.DatesAndServicePagesTests.HomePageSelenide;
-import hw5.DatesAndServicePagesTests.SelenideTestBase;
-import hw5.DatesAndServicePagesTests.UserPageSelenide;
+import hw5.ServicePagesTests.DifferentElementsPageSelenide;
+import hw5.ServicePagesTests.HomePageSelenide;
+import hw5.ServicePagesTests.SelenideTestBase;
+import hw5.ServicePagesTests.UserPageSelenide;
+import hw5.listeners.AllureAttachmentListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -17,6 +21,10 @@ import static hw5.enums.LogRow.*;
 import static hw5.enums.Users.PITER_CHAILOVSKII;
 import static org.testng.Assert.assertEquals;
 
+
+@Feature(value = "Checking the functionality of the Service Page")
+@Story(value = "Service Page Testing")
+@Listeners(AllureAttachmentListener.class)
 public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
 
     HomePageSelenide homePageSelenide;

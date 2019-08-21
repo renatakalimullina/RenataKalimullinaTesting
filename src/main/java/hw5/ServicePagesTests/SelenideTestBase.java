@@ -1,4 +1,4 @@
-package hw5.DatesAndServicePagesTests;
+package hw5.ServicePagesTests;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeSuite;

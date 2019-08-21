@@ -1,5 +1,6 @@
 package hw5.SimpleCompareTest;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -72,19 +73,22 @@ public class UserPage {
     private WebElement footer;
 
 
-
+    @Step("Get logged user name")
     public String getLoggedUser() {
         return logginedUser.getText();
     }
 
+    @Step("Get one of the header section text")
     public String fourItems(int number) {
         return elements.get(number).getText();
     }
 
+    @Step("Get one of the header section - Metals")
     public String getMetals(){
         return metalsColors.getText();
     }
 
+    @Step("Check that the 4 images on the Index Page  are displayed")
     public void fourImages(){
         firstImage.isDisplayed();
         secondImage.isDisplayed();
@@ -92,6 +96,7 @@ public class UserPage {
         fourthImage.isDisplayed();
     }
 
+    @Step("Get one of the 4 texts on the Index Page")
     public String fourTexts(int number){
         if (number == 1)
             return firstText.getText();
@@ -103,6 +108,7 @@ public class UserPage {
             return fourthText.getText();
     }
 
+    @Step("Get a text one of the main headers")
     public String textsOfTheMainHeaders(int number){
         if (number == 1)
             return mainTitle.getText();
@@ -110,22 +116,27 @@ public class UserPage {
             return jdiText.getText();
     }
 
+    @Step("Check that there is the iframe in the center of page")
     public void iframeInTheCenter(){
         iframe.isDisplayed();
     }
 
+    @Step("Get iframe")
     public WebElement switchToTheIframe(){
         return iframe;
     }
 
+    @Step("Check that there is Epam logo in the left top conner of iframe")
     public void checkEpamLogoIframe(){
         epamLogoIframe.isDisplayed();
     }
 
+    @Step("Check Left Section")
     public void LeftSection(){
         leftSection.isDisplayed();
     }
 
+    @Step("Check Footer")
     public void thereIsFooter(){
         footer.isDisplayed();
     }

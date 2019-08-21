@@ -1,6 +1,7 @@
-package hw5.DatesAndServicePagesTests;
+package hw5.ServicePagesTests;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 public class UserPageSelenide {
@@ -44,15 +45,17 @@ public class UserPageSelenide {
     private SelenideElement dropdownButtonServiceLeft;
 
 
-
+    @Step("Get logged user name")
     public String getLoggedUser() {
         return logginedUser.text();
     }
 
+    @Step("Click on \"Service\" subcategory in the Header")//5 Click on "Service" subcategory in the Header and check that drop down contains options
     public void clickOnServiceHeader(){
         dropdownButtonServiceHeader.click();
     }
 
+    @Step("Check that drop down contains options")
     public void containsOptions(){
         supportOption.exists();
         datesOption.exists();
@@ -64,14 +67,17 @@ public class UserPageSelenide {
         performanceOption.exists();
     }
 
+    @Step("Click on Service subcategory in the left section")
     public void clickOnServiceLeft(){
         dropdownButtonServiceLeft.click();
     }
 
+    @Step("Open through the header menu Service -> Different Elements Page")
     public void clickDifferentElementsHeader(){
         differentElementsOption.click();
     }
 
+    @Step("Open through the header menu Service -> Dates Page")
     public void clickDatesPage(){
         dropdownButtonServiceHeader.click();
         datesOption.click();

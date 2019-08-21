@@ -1,7 +1,8 @@
-package hw5.DatesAndServicePagesTests;
+package hw5.ServicePagesTests;
 
 import com.codeborne.selenide.SelenideElement;
 import hw5.enums.Users;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -21,11 +22,12 @@ public class HomePageSelenide {
     private SelenideElement loginButton;
 
 
+    @Step("Open test site by URL")
     public void openPage(){
         open("https://epam.github.io/JDI/index.html");
     }
 
-
+    @Step("Login as user")
     public void login(Users piterChailovskii) {
         profilePhoto.click();
         userName.setValue(piterChailovskii.getLogin());
