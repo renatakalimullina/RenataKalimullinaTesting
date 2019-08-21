@@ -17,8 +17,8 @@ import static java.lang.System.setProperty;
 import static org.testng.AssertJUnit.assertEquals;
 
 
-@Feature(value = "Comparison on the Home Page")
-@Story(value = "Home Page Testing")
+@Feature("Comparison on the Home Page")
+@Story("Home Page Testing")
 @Listeners(AllureAttachmentListener.class)
 public class SimpleCompareTestPageObject {
 
@@ -42,6 +42,8 @@ public class SimpleCompareTestPageObject {
     }
 
 
+    @Feature("Comparison on the Home Page")
+    @Story("333Home Page Testing")
     @Test
     public void openTestSite()
     {

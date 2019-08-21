@@ -23,9 +23,9 @@ import static org.testng.Assert.assertEquals;
 
 
 @Feature("Checking the functionality of the Service Page")
-@Story("Service Page Testing")
+@Story("111Service Page Testing with error")
 @Listeners(AllureAttachmentListener.class)
-public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
+public class ErrorServicePageInterfaceCheckSelenide extends SelenideTestBase{
 
     HomePageSelenide homePageSelenide;
     UserPageSelenide userPageSelenide;
@@ -47,7 +47,7 @@ public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
 
 
     @Feature("Checking the functionality of the Service Page")
-    @Story("222Service Page Testing")
+    @Story("Service Page Testing with error")
     @Test
     public void openTestSiteSelenide(){
         //1 Open test site by URL
@@ -90,7 +90,7 @@ public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
         differentElementsPageSelenide.selectCheckboxes(timeListForLogRow);
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        differentElementsPageSelenide.checkIndividualLog(timeListForLogRow, WATERtrue, WINDtrue);
+        differentElementsPageSelenide.checkIndividualLog(timeListForLogRow, WINDtrue, WINDtrue);
 
 
         //13 Select radio
