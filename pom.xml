@@ -10,13 +10,13 @@
 
     <properties>
         <allure.version>2.12.1</allure.version>
-        <!--<allure.version>2.6.0</allure.version>-->
         <aspectj.version>1.8.10</aspectj.version>
         <java.version>1.8</java.version>
         <testng.version>6.14.3</testng.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <suiteXmlFile>testngJenkins.xml</suiteXmlFile>
+        <suiteXmlFile>testNG.xml</suiteXmlFile>
         <io.cucumber.version>3.0.2</io.cucumber.version>
+        <cucumber.version>1.2.5</cucumber.version>
     </properties>
 
     <profiles>
@@ -26,7 +26,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/hw5/testngJenkins.xml</suite.xml>
+                <suite.xml>src/test/resources/hw5/testNG.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -133,6 +133,21 @@
             <version>${io.cucumber.version}</version>
         </dependency>
 
+
+
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>

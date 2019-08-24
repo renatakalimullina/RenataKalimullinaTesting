@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Three tests in PageObject" parallel="methods" thread-count="3" verbose="1">
+
+    <test name="suite">
+
+        <!--<packages>-->
+            <!--<package name="hw5"/>-->
+        <!--</packages>-->
+
+        <classes>
+            <!--<class name="hw5.ServicePageInterfaceCheckSelenide" />-->
+            <!--<class name="hw5.ErrorServicePageInterfaceCheckSelenide" />-->
+            <class name="hw5.SimpleCompareTestPageObject"/>
+        </classes>
+    </test>
+</suite>

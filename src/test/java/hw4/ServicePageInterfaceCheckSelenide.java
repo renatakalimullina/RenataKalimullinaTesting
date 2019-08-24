@@ -1,38 +1,18 @@
 package hw4;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static hw4.enums.LogRow.*;
 import static hw4.enums.HomePage.HOME_PAGE;
+import static hw4.enums.LogRow.*;
 import static hw4.enums.Users.PITER_CHAILOVSKII;
 import static org.testng.Assert.assertEquals;
 
 public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
 
-    HomePageSelenide homePageSelenide;
-    UserPageSelenide userPageSelenide;
-    DifferentElementsPageSelenide differentElementsPageSelenide;
-
     ArrayList<String> timeListForLogRow = new ArrayList<>();
-
-    @BeforeClass
-    public void beforeClass() {
-        homePageSelenide = Selenide.page(HomePageSelenide.class);
-        userPageSelenide = Selenide.page(UserPageSelenide.class);
-        differentElementsPageSelenide = Selenide.page(DifferentElementsPageSelenide.class);
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void closeDriver() {
-        getWebDriver().close();
-    }
-
 
     @Test
     public void openTestSiteSelenide(){

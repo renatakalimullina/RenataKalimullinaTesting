@@ -1,54 +1,30 @@
 package hw5;
 
-import hw5.SimpleCompareTest.HomePage;
-import hw5.SimpleCompareTest.UserPage;
+import hw3.pageObjects.TestBase;
 import hw5.listeners.AllureAttachmentListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static java.lang.System.setProperty;
+import java.util.concurrent.TimeUnit;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 
 @Feature("Comparison on the Home Page")
 @Story("Home Page Testing")
 @Listeners(AllureAttachmentListener.class)
-public class SimpleCompareTestPageObject {
-
-    private WebDriver driver;
-    private HomePage homePage;
-    private UserPage userPage;
-
-    @BeforeClass
-    public void beforeClass(){
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        homePage = PageFactory.initElements(driver, HomePage.class);
-        userPage = PageFactory.initElements(driver, UserPage.class);
-    }
-
-
-    @AfterMethod(alwaysRun = true)
-    public void closeDriver() {
-        driver.close();
-    }
-
+public class SimpleCompareTestPageObject extends TestBase {
 
     @Feature("Comparison on the Home Page")
-    @Story("333Home Page Testing")
+    @Story("Home Page Testing")
     @Test
-    public void openTestSite()
-    {
+    public void openTestSite() throws InterruptedException {
+
         //Open test site by URL
         driver.get("https://epam.github.io/JDI/index.html");
+        TimeUnit.SECONDS.sleep(5);
 
 
         //Assert Browser title

@@ -1,8 +1,5 @@
 package hw4;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -14,24 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class DatesPageSlidersCheckTest extends SelenideTestBase{
 
-    HomePageSelenide homePageSelenide;
-    UserPageSelenide userPageSelenide;
-    DatesPageSelenide datesPageSelenide;
-
     ArrayList<String> timeListForLogRow = new ArrayList<>();
-
-    @BeforeClass
-    public void beforeClass() {
-        homePageSelenide = Selenide.page(HomePageSelenide.class);
-        userPageSelenide = Selenide.page(UserPageSelenide.class);
-        datesPageSelenide = Selenide.page(DatesPageSelenide.class);
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void closeDriver() {
-        getWebDriver().close();
-    }
-
 
     @Test
     public void openTestSiteSelenide() {

@@ -1,15 +1,9 @@
 package hw5;
 
-import com.codeborne.selenide.Selenide;
-import hw5.ServicePagesTests.DifferentElementsPageSelenide;
-import hw5.ServicePagesTests.HomePageSelenide;
-import hw5.ServicePagesTests.SelenideTestBase;
-import hw5.ServicePagesTests.UserPageSelenide;
+import hw5.base.TestBaseSelenide;
 import hw5.listeners.AllureAttachmentListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -25,29 +19,12 @@ import static org.testng.Assert.assertEquals;
 @Feature("Checking the functionality of the Service Page")
 @Story("Service Page Testing")
 @Listeners(AllureAttachmentListener.class)
-public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
-
-    HomePageSelenide homePageSelenide;
-    UserPageSelenide userPageSelenide;
-    DifferentElementsPageSelenide differentElementsPageSelenide;
+public class ServicePageInterfaceCheckSelenide extends TestBaseSelenide {
 
     ArrayList<String> timeListForLogRow = new ArrayList<>();
 
-    @BeforeClass
-    public void beforeClass() {
-        homePageSelenide = Selenide.page(HomePageSelenide.class);
-        userPageSelenide = Selenide.page(UserPageSelenide.class);
-        differentElementsPageSelenide = Selenide.page(DifferentElementsPageSelenide.class);
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void closeDriver() {
-        getWebDriver().close();
-    }
-
-
     @Feature("Checking the functionality of the Service Page")
-    @Story("222Service Page Testing")
+    @Story("Service Page Testing")
     @Test
     public void openTestSiteSelenide(){
         //1 Open test site by URL

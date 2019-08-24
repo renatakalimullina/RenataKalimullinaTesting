@@ -1,37 +1,12 @@
 package hw3;
 
-import hw3.pageObjects.HomePage;
-import hw3.pageObjects.UserPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import hw3.pageObjects.TestBase;
 import org.testng.annotations.Test;
 
-import static java.lang.System.setProperty;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class SimpleCompareTestPageObject {
+public class SimpleCompareTestPageObject extends TestBase {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private UserPage userPage;
-
-    @BeforeClass
-    public void beforeClass(){
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        homePage = PageFactory.initElements(driver, HomePage.class);
-        userPage = PageFactory.initElements(driver, UserPage.class);
-    }
-
-
-    @AfterMethod(alwaysRun = true)
-    public void closeDriver() {
-        driver.close();
-    }
 
 
     @Test
