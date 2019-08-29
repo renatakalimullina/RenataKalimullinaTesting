@@ -1,34 +1,30 @@
 package hw5;
 
-import hw3.pageObjects.TestBase;
+import hw5.base.TestBaseSelenide;
 import hw5.listeners.AllureAttachmentListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.AssertJUnit.assertEquals;
 
 
 @Feature("Comparison on the Home Page")
 @Story("Home Page Testing")
 @Listeners(AllureAttachmentListener.class)
-public class SimpleCompareTestPageObject extends TestBase {
+public class SimpleCompareTestPageObject extends TestBaseSelenide {
 
-    @Feature("Comparison on the Home Page")
-    @Story("Home Page Testing")
+
     @Test
     public void openTestSite() throws InterruptedException {
 
         //Open test site by URL
-        driver.get("https://epam.github.io/JDI/index.html");
-        TimeUnit.SECONDS.sleep(5);
-
+        homePage.openPage();
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        assertEquals(getWebDriver().getTitle(), "Home Page");
 
 
         //Perform login
@@ -40,7 +36,7 @@ public class SimpleCompareTestPageObject extends TestBase {
 
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        assertEquals(getWebDriver().getTitle(), "Home Page");
 
 
         //Assert that there are 4 items on the header section are displayed and they have proper texts
@@ -71,16 +67,16 @@ public class SimpleCompareTestPageObject extends TestBase {
 
 
         //Switch to the iframe and check that there is Epam logo in the left top conner of iframe
-        driver.switchTo().frame(userPage.switchToTheIframe());
+        getWebDriver().switchTo().frame(userPage.switchToTheIframe());
         userPage.checkEpamLogoIframe();
 
 
         //Switch to original window back
-        driver.switchTo().defaultContent();
+        getWebDriver().switchTo().defaultContent();
 
 
         //Assert that JDI GITHUB is a link and has a proper URL
-        assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
+        assertEquals(getWebDriver().getCurrentUrl(), "https://epam.github.io/JDI/index.html");
 
 
         //Assert that there is Left Section

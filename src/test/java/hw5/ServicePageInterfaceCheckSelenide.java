@@ -23,8 +23,6 @@ public class ServicePageInterfaceCheckSelenide extends TestBaseSelenide {
 
     ArrayList<String> timeListForLogRow = new ArrayList<>();
 
-    @Feature("Checking the functionality of the Service Page")
-    @Story("Service Page Testing")
     @Test
     public void openTestSiteSelenide(){
         //1 Open test site by URL

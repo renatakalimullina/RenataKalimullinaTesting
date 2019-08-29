@@ -2,6 +2,8 @@ package hw5.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import hw3.pageObjects.HomePage;
+import hw3.pageObjects.UserPage;
 import hw5.steps.ServicePagesTests.DifferentElementsPageSelenide;
 import hw5.steps.ServicePagesTests.HomePageSelenide;
 import hw5.steps.ServicePagesTests.UserPageSelenide;
@@ -18,6 +20,9 @@ public abstract class TestBaseSelenide {
     protected UserPageSelenide userPageSelenide;
     protected DifferentElementsPageSelenide differentElementsPageSelenide;
 
+    protected HomePage homePage;
+    protected UserPage userPage;
+
 
     @BeforeSuite(alwaysRun = true)
     public static void beforeSuite(){
@@ -31,6 +36,9 @@ public abstract class TestBaseSelenide {
         homePageSelenide = Selenide.page(HomePageSelenide.class);
         userPageSelenide = Selenide.page(UserPageSelenide.class);
         differentElementsPageSelenide = Selenide.page(DifferentElementsPageSelenide.class);
+
+        homePage = Selenide.page(HomePage.class);
+        userPage = Selenide.page(UserPage.class);
     }
 
     @AfterMethod(alwaysRun = true)
