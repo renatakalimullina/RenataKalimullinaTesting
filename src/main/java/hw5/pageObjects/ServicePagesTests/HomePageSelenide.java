@@ -1,4 +1,4 @@
-package hw5.steps.ServicePagesTests;
+package hw5.pageObjects.ServicePagesTests;
 
 import com.codeborne.selenide.SelenideElement;
 import hw5.enums.Users;

@@ -1,4 +1,4 @@
-package hw5.steps.SimpleCompareTest;
+package hw5.pageObjects.SimpleCompareTest;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
