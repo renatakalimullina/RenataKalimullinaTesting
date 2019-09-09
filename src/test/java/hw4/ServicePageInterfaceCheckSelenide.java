@@ -41,6 +41,9 @@ public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
         userPageSelenide.clickDifferentElementsHeader();
 
 
+
+
+
         //8 Check interface on Different elements page, it contains all needed elements
         differentElementsPageSelenide.checkInterfaceOnDifferentElementsPage();
 
