@@ -1,16 +1,23 @@
 package hw6.pageObjects;
 
-import hw6.hooks.TestDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static hw5.enums.HomePage.HOME_PAGE;
-import static org.testng.Assert.assertEquals;
-
 public class HomePage  extends BasePage {
 
     private static HomePage instance;
+
+    private HomePage(WebDriver driver) {
+        super(driver);
+    }
+
+    public static HomePage getInstance(WebDriver driver) {
+        if (instance == null) {
+            instance = new HomePage(driver);
+        }
+        return instance;
+    }
 
     @FindBy(css = ".profile-photo")
     private WebElement profilePhoto;
@@ -24,9 +31,7 @@ public class HomePage  extends BasePage {
     @FindBy(css = ".login [type = 'submit']")
     private WebElement loginButton;
 
-    private HomePage(WebDriver driver) {
-        super(driver);
-    }
+
 
 
     public void openPage(){
@@ -42,16 +47,5 @@ public class HomePage  extends BasePage {
     }
 
 
-    public void checkTitle(){
-        assertEquals(TestDriver.getDriver().getTitle(), HOME_PAGE.getTitleName());
-    }
-
-
-    public static HomePage getInstance(WebDriver driver) {
-        if (instance == null) {
-            instance = new HomePage(driver);
-        }
-        return instance;
-    }
 
 }

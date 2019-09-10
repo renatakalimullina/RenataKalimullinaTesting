@@ -1,15 +1,27 @@
 package hw6.pageObjects;
 
-import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 public class UserPage extends BasePage {
 
     private static UserPage instance;
+
+    private UserPage(WebDriver driver) {
+        super(driver);
+    }
+
+
+    public static UserPage getInstance(WebDriver driver) {
+        if (instance == null) {
+            instance = new UserPage(driver);
+        }
+        return instance;
+    }
+
+
+
 
     @FindBy(css = "#user-name")
     private WebElement logginedUser;
@@ -35,7 +47,7 @@ public class UserPage extends BasePage {
     private WebElement simpleTableOption;
 
     @FindBy(css = "a[href^='user-table.html']")
-    private SelenideElement userTableOption;
+    private WebElement userTableOption;
 
     @FindBy(css = "a[href^='table-pages.html']")
     private WebElement tablePagesOption;
@@ -51,10 +63,6 @@ public class UserPage extends BasePage {
 
 
 
-    private UserPage(WebDriver driver) {
-        super(driver);
-    }
-
     public String getLoggedUser() {
         return logginedUser.getText();
     }
@@ -69,6 +77,7 @@ public class UserPage extends BasePage {
         searchOption.isDisplayed();
         complexTableOption.isDisplayed();
         simpleTableOption.isDisplayed();
+        userTableOption.isDisplayed();
         tablePagesOption.isDisplayed();
         differentElementsOption.isDisplayed();
         performanceOption.isDisplayed();
@@ -82,20 +91,8 @@ public class UserPage extends BasePage {
         differentElementsOption.click();
     }
 
-    public void clickDatesPage(){
-        dropdownButtonServiceHeader.click();
-        datesOption.click();
-    }
-
-    public void checkUsername(String username){
-        assertEquals(logginedUser.getText(), username);//PITER_CHAILOVSKII.getUserName());
-    }
-
-    public static UserPage getInstance(WebDriver driver) {
-        if (instance == null) {
-            instance = new UserPage(driver);
-        }
-        return instance;
+    public void clickUserTable(){
+        userTableOption.click();
     }
 
 }

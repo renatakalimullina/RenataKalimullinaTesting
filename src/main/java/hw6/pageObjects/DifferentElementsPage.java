@@ -1,17 +1,15 @@
 package hw6.pageObjects;
 
-import com.codeborne.selenide.SelenideElement;
-import hw4.enums.LogRow;
+import hw5.enums.LogRow;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import static com.codeborne.selenide.Condition.checked;
-import static com.codeborne.selenide.Condition.text;
 
 public class DifferentElementsPage  extends BasePage {
 
@@ -29,134 +27,135 @@ public class DifferentElementsPage  extends BasePage {
     }
 
     @FindBy(css = "input[type=checkbox]")
-    private List<SelenideElement> checkboxesOnDifferentElementsPage;
+    private List<WebElement> checkboxesOnDifferentElementsPage;
 
     @FindBy(css = "input[type=radio]")
-    private List<SelenideElement> radiosOnDifferentElementsPage;
+    private List<WebElement> radiosOnDifferentElementsPage;
 
     @FindBy(css = ".uui-form-element")
-    private SelenideElement dropdownOnDifferentElementsPage;
+    private WebElement dropdownOnDifferentElementsPage;
 
     @FindBy(css = "[attribute = 'Default Button']")
-    private SelenideElement defaultButtonOnDifferentElementsPage;
+    private WebElement defaultButtonOnDifferentElementsPage;
 
 
 
     @FindBy(css = "[name='log-sidebar']")
-    private SelenideElement rightSection;
+    private WebElement rightSection;
 
     @FindBy(css = "#mCSB_1")
-    private SelenideElement leftSection;
+    private WebElement leftSection;
 
 
 
     @FindBy(css = ".info-panel-section")
-    private SelenideElement  log;
+    private WebElement  log;
 
 
 
     @FindBy(css = "select[class='uui-form-element']")
-    private SelenideElement dropdown;
-
-
+    private WebElement dropdown;
 
 
 
     public void checkInterfaceOnDifferentElementsPage(){
         for(int i = 0; i < 4; i++)
-            checkboxesOnDifferentElementsPage.get(i).exists();
+            checkboxesOnDifferentElementsPage.get(i).isDisplayed();
         for(int i = 0; i < 4; i++)
-            radiosOnDifferentElementsPage.get(i).exists();
-        dropdownOnDifferentElementsPage.exists();
-        defaultButtonOnDifferentElementsPage.exists();
+            radiosOnDifferentElementsPage.get(i).isDisplayed();
+        dropdownOnDifferentElementsPage.isDisplayed();
+
     }
 
-    public void rightSection(){
-        rightSection.exists();
+    public boolean rightSection(){
+        return rightSection.isDisplayed();
     }
 
-    public void leftSection(){
-        leftSection.exists();
-    }
-
-
-    public void selectCheckboxes(ArrayList<String> timeArrayForLogRow) {
-        checkboxesOnDifferentElementsPage.get(0).setSelected(true);
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
-        checkboxesOnDifferentElementsPage.get(0).shouldBe(checked);
-
-        checkboxesOnDifferentElementsPage.get(2).setSelected(true);
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
-        checkboxesOnDifferentElementsPage.get(2).shouldBe(checked);
-    }
-
-    public void selectRadio(ArrayList<String> timeArrayForLogRow) {
-        radiosOnDifferentElementsPage.get(3).setSelected(true);
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
-        radiosOnDifferentElementsPage.get(3).shouldBe(checked);
-    }
-
-    public void selectInDropdown(ArrayList<String> timeArrayForLogRow) {
-        dropdown.selectOptionContainingText("Yellow");
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+    public boolean leftSection(){
+        return leftSection.isDisplayed();
     }
 
 
-    public void unselectCheckboxes(ArrayList<String> timeArrayForLogRow){
-        checkboxesOnDifferentElementsPage.get(0).setSelected(false);
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+    public void selectCheckboxes(ArrayList<String> timeListForLogRowDifferentElements) {
+        checkboxesOnDifferentElementsPage.get(0).click();
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+        checkboxesOnDifferentElementsPage.get(0).isSelected();
 
-        checkboxesOnDifferentElementsPage.get(2).setSelected(false);
-        timeArrayForLogRow.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+        checkboxesOnDifferentElementsPage.get(2).click();
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+        checkboxesOnDifferentElementsPage.get(2).isSelected();
+    }
+
+    public void selectRadio(ArrayList<String> timeListForLogRowDifferentElements) {
+        radiosOnDifferentElementsPage.get(3).click();
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+            radiosOnDifferentElementsPage.get(3).isSelected();
+    }
+
+    public void selectInDropdown(ArrayList<String> timeListForLogRowDifferentElements) {
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Yellow");
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+    }
+
+
+    public void unselectCheckboxes(ArrayList<String> timeListForLogRowDifferentElements){
+        checkboxesOnDifferentElementsPage.get(0).click();
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+
+        checkboxesOnDifferentElementsPage.get(2).click();
+        timeListForLogRowDifferentElements.add(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
     }
 
 
 
-
-
-    public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox){
-        log.shouldBe(text(
-                        timeArrayForLogRow.get(1) +
-                        secondCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(0) +
-                        firstCheckbox.getStatusOfButton() ));
+    public String getLogRowText(){
+        return log.getText();
     }
 
-    public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName){
-        log.shouldBe(text(
-                        timeArrayForLogRow.get(2) +
-                        radioName.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(1) +
-                        secondCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(0) +
-                        firstCheckbox.getStatusOfButton() ));
+    public String getIndividualLog(ArrayList<String> timeListForLogRowDifferentElements, LogRow firstCheckbox, LogRow secondCheckbox){
+        return (timeListForLogRowDifferentElements.get(1) +
+                secondCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(0) +
+                firstCheckbox.getStatusOfButton());
     }
 
-    public void checkIndividualLog(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName){
-        log.shouldBe(text(
-                        timeArrayForLogRow.get(3) +
-                        dropdownName.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(2) +
-                        radioName.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(1) +
-                        secondCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(0) +
-                        firstCheckbox.getStatusOfButton() ));
+
+    public String getIndividualLog(ArrayList<String> timeListForLogRowDifferentElements, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName){
+        return timeListForLogRowDifferentElements.get(2) +
+                radioName.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(1) +
+                secondCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(0) +
+                firstCheckbox.getStatusOfButton();
     }
 
-    public void checkIndividualLogWithUnselect(ArrayList<String> timeArrayForLogRow, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName, LogRow firstUnselectCheckbox, LogRow seconUnselectdCheckbox){
-        log.shouldBe(text(
-                        timeArrayForLogRow.get(5) +
-                        seconUnselectdCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(4) +
-                        firstUnselectCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(3) +
-                        dropdownName.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(2) +
-                        radioName.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(1) +
-                        secondCheckbox.getStatusOfButton() + "\n" +
-                        timeArrayForLogRow.get(0) +
-                        firstCheckbox.getStatusOfButton() ));
+
+    public String getIndividualLog(ArrayList<String> timeListForLogRowDifferentElements, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName){
+        return timeListForLogRowDifferentElements.get(3) +
+                dropdownName.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(2) +
+                radioName.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(1) +
+                secondCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(0) +
+                firstCheckbox.getStatusOfButton();
+    }
+
+
+    public String getIndividualLogWithUnselect(ArrayList<String> timeListForLogRowDifferentElements, LogRow firstCheckbox, LogRow secondCheckbox, LogRow radioName, LogRow dropdownName, LogRow firstUnselectCheckbox, LogRow seconUnselectdCheckbox) {
+
+        return timeListForLogRowDifferentElements.get(5) +
+                seconUnselectdCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(4) +
+                firstUnselectCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(3) +
+                dropdownName.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(2) +
+                radioName.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(1) +
+                secondCheckbox.getStatusOfButton() + "\n" +
+                timeListForLogRowDifferentElements.get(0) +
+                firstCheckbox.getStatusOfButton();
     }
 }

@@ -5,6 +5,8 @@ import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.System.setProperty;
 
 public class CucumberHooks {
@@ -14,6 +16,7 @@ public class CucumberHooks {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         TestDriver.setDriver(driver);
     }
 

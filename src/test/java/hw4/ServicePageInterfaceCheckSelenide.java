@@ -40,10 +40,6 @@ public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
         userPageSelenide.clickOnServiceHeader();
         userPageSelenide.clickDifferentElementsHeader();
 
-
-
-
-
         //8 Check interface on Different elements page, it contains all needed elements
         differentElementsPageSelenide.checkInterfaceOnDifferentElementsPage();
 
@@ -57,6 +53,7 @@ public class ServicePageInterfaceCheckSelenide extends SelenideTestBase{
 
         //11 Select checkboxes
         differentElementsPageSelenide.selectCheckboxes(timeListForLogRow);
+
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
         differentElementsPageSelenide.checkIndividualLog(timeListForLogRow, WATERtrue, WINDtrue);
