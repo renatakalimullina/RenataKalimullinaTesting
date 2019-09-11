@@ -13,16 +13,16 @@ import static org.testng.Assert.assertTrue;
 
 public class AssertionsSteps extends BaseStep{
 
+    private List<UserTableValue> Values;
+
     @Then("The browser title is Home Page")
     public void userName(){
-        //homePage.checkTitle();
         assertEquals(TestDriver.getDriver().getTitle(), HOME_PAGE.getTitleName());
     }
 
     @Then("The user name in the left-top side is '([^\\\"]*)'")
     public void checkUsername(String username){
         assertEquals(userPage.getLoggedUser(), username);
-        //userPage.checkUsername(username);
     }
 
     @Then("Check that drop down contains options")
@@ -79,8 +79,8 @@ public class AssertionsSteps extends BaseStep{
     @Then("User table contains following values")
     public void userTableContains(List<UserTableValue> values)
      {
-         //UserTableValue value = values.get(0);
-         System.out.println(values);
+         UserTableValue value = values.get(0);
+         System.out.println(value);
         userTablePage.getLogRowText();
     }
 
