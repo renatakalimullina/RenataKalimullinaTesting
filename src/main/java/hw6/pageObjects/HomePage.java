@@ -19,6 +19,10 @@ public class HomePage  extends BasePage {
         return instance;
     }
 
+    public static void closePage(){
+        instance = null;
+    }
+
     @FindBy(css = ".profile-photo")
     private WebElement profilePhoto;
 
@@ -45,6 +49,8 @@ public class HomePage  extends BasePage {
         userPassword.sendKeys(password);
         loginButton.click();
     }
+
+
 
 
 

@@ -20,6 +20,9 @@ public class UserPage extends BasePage {
         return instance;
     }
 
+    public static void closePage(){
+        instance = null;
+    }
 
 
 
@@ -94,6 +97,7 @@ public class UserPage extends BasePage {
     public void clickUserTable(){
         userTableOption.click();
     }
+
 
 }
 

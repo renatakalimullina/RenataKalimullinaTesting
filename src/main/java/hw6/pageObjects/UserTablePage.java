@@ -24,12 +24,21 @@ public class UserTablePage extends BasePage  {
         return instance;
     }
 
+    public static void closePage(){
+        instance = null;
+    }
+
+
+
 
     @FindBy(css = "tbody select")
     private List<WebElement> dropdowns;
 
     @FindBy(css = "tbody select option")
     private List<WebElement> dropdownValues;
+
+    @FindBy(css = "tbody select option[selected]")
+    private List<WebElement> dropdownSelectedOPtion;
 
     @FindBy(css = "tbody a")
     private List<WebElement> names;
@@ -45,6 +54,8 @@ public class UserTablePage extends BasePage  {
 
     @FindBy(css = ".info-panel-section")
     private WebElement  log;
+
+
 
     public void checkDropdownsAreDisplayed(){
         for(int i = 0; i < 6; i++)
@@ -92,5 +103,23 @@ public class UserTablePage extends BasePage  {
     public String getDropdownValues(){
         return dropdownValues.get(0).getText() + "\n" + dropdownValues.get(1).getText() + "\n" + dropdownValues.get(2).getText();
     }
+
+
+
+
+    public String getName(Integer number){
+        return names.get(number).getText();
+    }
+
+    public String getDescription(Integer number){
+        return texts.get(number).getText();
+    }
+
+    public String stringWithoutLineBreak(String string){
+        String lines[] = string.split("\\r?\\n");
+        return lines[0] + " " + lines[1];
+    }
+
+
 
 }

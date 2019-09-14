@@ -26,6 +26,11 @@ public class DifferentElementsPage  extends BasePage {
         return instance;
     }
 
+    public static void closePage(){
+        instance = null;
+    }
+
+
     @FindBy(css = "input[type=checkbox]")
     private List<WebElement> checkboxesOnDifferentElementsPage;
 
@@ -158,4 +163,6 @@ public class DifferentElementsPage  extends BasePage {
                 timeListForLogRowDifferentElements.get(0) +
                 firstCheckbox.getStatusOfButton();
     }
+
+
 }

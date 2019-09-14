@@ -66,28 +66,10 @@ public class AssertionsSteps extends BaseStep{
 
 
 
-
-
-
-
-
     @Then("\"User Table\" page is opened")
     public void checkPage(){
         assertEquals(TestDriver.getDriver().getCurrentUrl(), "https://epam.github.io/JDI/user-table.html");
     }
-
-    @Then("User table contains following values")
-    public void userTableContains(List<UserTableValue> values)
-     {
-         UserTableValue value = values.get(0);
-         System.out.println(value);
-        userTablePage.getLogRowText();
-    }
-
-
-
-
-
 
     @Then("6 NumberType Dropdowns are displayed on Users Table on User Table Page")
     public void checkNumberTypeDropdowns(){
@@ -114,6 +96,25 @@ public class AssertionsSteps extends BaseStep{
         userTablePage.checkCheckboxesAreDisplayed();
     }
 
+    @Then("User table contains following values")
+    public void userTableContains(List<UserTableValue> values)
+    {
+        assertEquals(values.get(0).getUser(), userTablePage.getName(0));
+        assertEquals(values.get(0).getDescription(), userTablePage.getDescription(0));
+
+        for(int i = 1; i < 3; i++)
+        {
+            assertEquals(values.get(i).getUser(), userTablePage.getName(i));
+            assertEquals(values.get(i).getDescription(), userTablePage.getDescription(i));
+        }
+
+        for(int i = 3; i < 6; i++)
+        {
+            assertEquals(values.get(i).getUser(), userTablePage.getName(i));
+            assertEquals(values.get(i).getDescription(), userTablePage.stringWithoutLineBreak(userTablePage.getDescription(i)));
+        }
+    }
+
     @Then("1 log row has \"Vip: condition changed to true\" text in log section")
     public void checkLogRowWithVipCheckbox(){
         assertEquals(userTablePage.getLogRowText(), userTablePage.getIndividualLog(timeArrayForLogRowUserTable) );
@@ -123,5 +124,4 @@ public class AssertionsSteps extends BaseStep{
     public void droplistContainsValues(List<String> DropdownValues){
         assertEquals(userTablePage.getDropdownValues(), DropdownValues.get(1) + "\n" +DropdownValues.get(2) + "\n" + DropdownValues.get(3));
     }
-
 }

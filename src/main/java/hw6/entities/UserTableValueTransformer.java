@@ -17,9 +17,9 @@ public class UserTableValueTransformer implements TypeRegistryConfigurer {
     public void configureTypeRegistry(TypeRegistry typeRegistry) {
         typeRegistry.defineDataTableType(new DataTableType(UserTableValue.class,
                         (Map<String, String> row) -> {
-                            String Number = row.get("number");
-                            String User = row.get("user");
-                            String Description = row.get("description");
+                            Integer Number = Integer.parseInt(row.get("Number"));
+                            String User = row.get("User");
+                            String Description = row.get("Description");
 
                             return new UserTableValue(Number, User, Description);
                         }

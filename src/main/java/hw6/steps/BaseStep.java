@@ -12,15 +12,12 @@ public abstract class BaseStep {
 
     static public ArrayList<String> timeListForLogRowDifferentElements;
     static public ArrayList<String> timeArrayForLogRowUserTable;
-    protected HomePage homePage;
-    protected UserPage userPage;
-    protected DifferentElementsPage differentElementsPage;
-    protected UserTablePage userTablePage;
-
-
+    protected  HomePage homePage;
+    protected  UserPage userPage;
+    protected  DifferentElementsPage differentElementsPage;
+    protected  UserTablePage userTablePage;
 
     public BaseStep() {
-
         timeListForLogRowDifferentElements = new ArrayList<>();
         timeArrayForLogRowUserTable = new ArrayList<>();
 
@@ -29,5 +26,4 @@ public abstract class BaseStep {
         differentElementsPage = DifferentElementsPage.getInstance(TestDriver.getDriver());
         userTablePage = UserTablePage.getInstance(TestDriver.getDriver());
     }
-
 }
