@@ -1,8 +1,7 @@
 package hw7;
 
 import com.epam.jdi.light.driver.get.DriverData;
-import hw7.entities.MenuOptions;
-import hw7.entities.Users;
+import hw7.entities.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -39,18 +38,21 @@ public class JdiSiteTest {
         //!!!!!
 
 
-        JdiSite.metalsAndColorsPage.chooseMetal();
-
-//        JdiSite.metalsAndColorsPage.chooseElements();
-//
-//
-//
-//        JdiSite.metalsAndColorsPage.chooseMetal();
-//        JdiSite.metalsAndColorsPage.chooseColor();
+        //JdiSite.metalsAndColorsPage.checkSelectedOne();
 
 
 
 
+
+
+
+
+
+        JdiSite.metalsAndColorsPage.chooseColor(Colors.RED);
+        JdiSite.metalsAndColorsPage.chooseMetal(Metals.SELEN);
+        JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.CUCUMBER);
+        JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.TOMATO);
+        JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.VEGETABLES);
 
 
         JdiSite.metalsAndColorsPage.submitFormMetalsColors();
