@@ -16,13 +16,11 @@ public class JdiHomePage extends WebPage {
 
     private JdiLoginForm loginForm;
 
-
     @Css("#user-name")
     private Label userName;
 
     @Css(".profile-photo")
     private Button profilePhoto;
-
 
     public void login(Users user) {
         profilePhoto.click();

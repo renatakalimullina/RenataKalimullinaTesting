@@ -35,28 +35,23 @@ public class JdiSiteTest {
         //Fill form Metals & Colors by data
         JdiSite.metalsAndColorsPage.chooseSummaryFirstLine("3");
         JdiSite.metalsAndColorsPage.chooseSummarySecondLine("8");
-        //!!!!!
 
-
-        //JdiSite.metalsAndColorsPage.checkSelectedOne();
-
-
-
-
-
-
-
-
+        JdiSite.metalsAndColorsPage.chooseElements(Elements.WATER);
+        JdiSite.metalsAndColorsPage.chooseElements(Elements.FIRE);
 
         JdiSite.metalsAndColorsPage.chooseColor(Colors.RED);
+
         JdiSite.metalsAndColorsPage.chooseMetal(Metals.SELEN);
+
         JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.CUCUMBER);
         JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.TOMATO);
         JdiSite.metalsAndColorsPage.chooseVegetables(Vegetables.VEGETABLES);
 
-
+        //Submit form Metals & Colors
         JdiSite.metalsAndColorsPage.submitFormMetalsColors();
 
+        //Result sections should contains data
+        JdiSite.metalsAndColorsPage.checkResultLog();
     }
 
     @AfterClass

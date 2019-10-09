@@ -13,5 +13,4 @@ public class JdiUserPage extends WebPage {
     public void openMetalsAndColorsPage(MenuOptions option){
         headerMenu.select(option.getMenuOption());
     }
-
 }
