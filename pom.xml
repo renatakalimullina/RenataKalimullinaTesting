@@ -12,7 +12,7 @@
         <allure.version>2.12.1</allure.version>
         <aspectj.version>1.8.10</aspectj.version>
         <java.version>1.8</java.version>
-        <testng.version>6.14.3</testng.version>
+        <testng.version>7.5.1</testng.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <suiteXmlFile>testNG.xml</suiteXmlFile>
         <io.cucumber.version>3.0.2</io.cucumber.version>
